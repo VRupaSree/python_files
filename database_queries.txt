@@ -1,0 +1,18 @@
+insert into test(pan,voter,ration_card)values('12123','12345','0987');
+insert into test(pan)values('3457');
+insert into test(voter)values('3678');
+insert into test(ration_card)values('12343');
+delete from test where pan='12123';
+
+alter table test add temp varchar(25);
+
+update test set temp=pan where pan is not null;
+
+update test set temp=voter where voter is not null;
+update test set temp= ration_card where ration_card is not null;
+
+update test set temp= case
+	when pan is not null then pan
+	when voter is not null then voter
+	else ration_card
+end
